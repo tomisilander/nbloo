@@ -1,0 +1,12 @@
+Next:
+
+Mallin hyvyys riippuu siita kuinka hyvin malli ennustaa. 
+Siksi mallin hyvyytta arvioidaan leave-one-out scorella.
+Kysymys on kuinka poistetun testivektori d:n todennakoisyys
+muuttuu kun malliin lisataan muuttuja X. Jos d[X] = v,
+kysymys kuuluu mika on v:n todennakoisyys eri luokissa.
+Jos d kuuluu luokkaan c lasketaan v:n todennakoisyys 
+luokassa c leave-one-out jakauman perusteella
+luokissa se lasketaan normaalisti.
+ 
+candidate solution is (varset, ?)

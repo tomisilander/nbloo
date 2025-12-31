@@ -2,21 +2,36 @@
 import numpy as np
 
 """
+  Support for quickly compute leave-one-out predictive distributions for data vectors 
+  in a discrete dataset using a Naive Bayes classifier.
+
   The basic question is: how should predictive distribution for each left out
   data vector be updated if we add a feature to a model. It is natural to start 
   with the model without any features so the predictive distribution are based on
   the class proportions (for different classes left out). After that, it depends 
   both on vector's class and its value for the added feature. 
   
-  So for each added variable V and for each value k of that variable, one has a 
-  class distribution update "distribution" that describes how the 
-  predictive class distribution of a vector belonging to a class C and having 
-  value k for V should be updated. Such a data structure is a list of length |V|
-  of matrices with dimensions r_i x |C|x|C| (is this true?).
+  So for each added variable V_i and for each value k (out of r_i possible) 
+  of that variable, one has a  class distribution update "distribution" that 
+  describes how the predictive class distribution of a vector belonging to a 
+  class C and having value k for V should be updated. 
+  Such a data structure U is a list of length |V| of matrices with dimensions 
+  r_i x |C|x|C| (is this true?).
   
-  The process contains two logical parts:
+  The process to create this data structure contains two logical parts:
         - counting number of different values for each variable
         - turning counts into leave-one-out distributions
+
+        
+  Denoting the number of classes by |C|, number of variables by |V|, and
+  the number of values for variable V_i by r__i we will describe the class distribution 
+  update as follows: let X_j be the variables already added to the model, 
+  and let the class of the data vector be C_j. Let us assume that we have 
+  a leave-one-out predictive distribution .
+  When we now add variable V_i with value k to the model, we want to compute the 
+  updated predictive distribution P(C|X_j,V_i=k,D-{D_j}). To do so we multiply 
+  the old predictive distributopn P(C|X_j,D-{D_j}) with the leave-one-out distribution
+  U[i][k][C_j] (which is a vector of length |C|) and renormalize.
 """
 
 def file2rows(filename):

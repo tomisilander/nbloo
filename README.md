@@ -23,8 +23,8 @@ To turn frequencies into probability distribution, SNML smoothing defines
 $$
 P(k) = 
 \begin{cases}
-1 \text{, if }N_k=0, \\
-(N_k+1)\frac{N_k+1}{N_k}^{N_k} \text{, otherwise.}
+1 & \text{, if }N_k=0, \\
+(N_k+1)\frac{N_k+1}{N_k}^{N_k} & \text{, otherwise.}
 \end{cases}
 $$ 
 
